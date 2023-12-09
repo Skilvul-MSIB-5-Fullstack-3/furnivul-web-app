@@ -180,7 +180,7 @@ module.exports = {
       const page = parseInt(req.query.page);
       const limit = parseInt(req.query.limit);
 
-      let transactions = await Transaction.find()
+      let transactions = await TransactionDetail.find()
         .populate("_transactionId")
         .populate("_productId")
         .populate("_courierId")
