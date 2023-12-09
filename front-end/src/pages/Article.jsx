@@ -11,11 +11,14 @@ function Article() {
   const [datas, setData] = useState([]);
 
   useEffect(() => {
-    axios(
-      "https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=6b7134c9f303460892979d4632931405"
-    ).then((result) => {
-      setData(result.data.articles);
-    });
+    axios("https://64e224b4ab0037358818bf67.mockapi.io/articleFurniture")
+      .then((result) => {
+        // console.log("success fetching :", result.data);
+        setData(result.data);
+      })
+      .catch((error) => {
+        console.log("failed fetching :", error);
+      });
   }, []);
 
   return (
@@ -28,7 +31,7 @@ function Article() {
               <span className="[&_p]:inline">
                 &nbsp; Lihat apa saja yang baru dari Furnivul&nbsp;
                 <a
-                  href="https://flowbite.com"
+                  href="/category-product"
                   className="decoration-600 dark:decoration-500 inline font-medium text-cyan-600 underline decoration-solid underline-offset-2 hover:no-underline dark:text-cyan-500"
                 >
                   di sini
@@ -54,30 +57,29 @@ function Article() {
         <Breadcrumb.Item href="#">Articles</Breadcrumb.Item>
       </Breadcrumb>
       <div>
-        <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-3 mx-8 ">
+        <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-3 mx-8 mb-8 ">
           {/* article axios */}
 
-          {datas.map((datas, index) => (
-            <div key={index}>
+          {datas.map((datas) => (
+            <div key={datas.id}>
               <Card
                 className="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden mt-4 h-full"
                 renderImage={() => (
                   <img
-                    width={1000}
-                    height={350}
-                    src={datas.urlToImage}
+                    src={datas.image_article}
                     alt="image 1"
+                    className="w-full h-56 object-cover"
                   />
                 )}
               >
                 <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                  {datas.title}
+                  {datas.title_article}
                 </h5>
                 <p className="font-normal text-gray-700 dark:text-gray-400">
-                  {datas.description}
+                  {datas.desc_title}
                 </p>
                 <div className="flex flex-end">
-                  <NavLink to={"/article/detail-article"}>
+                  <NavLink to={`/article/detail-article/${datas.id}`}>
                     <Button>
                       {" "}
                       <span>DetailArticle</span>{" "}

@@ -8,7 +8,6 @@ import lowfi2 from "../assets/images/Low-Fi Placeholder 2.png";
 import Swiper from "../components/Swiper";
 import React from "react";
 import { Button } from "flowbite-react";
-import "./style/landing.css";
 
 function LandingPage() {
   return (
@@ -54,9 +53,13 @@ function LandingPage() {
           </div>
         </div>
       </div>
-      <div className="container-fluid lg:flex justify-between lg:px-10 m-10 lg:mx-auto lg:my-10 gap-10 lg:rounded-none lg:shadow-none rounded-lg shadow">
-        <div className="flex flex-col lg:flex-row mx-auto gap-8">
-          <img className="rounded-lg xl:w-[550px] " src={about} alt="" />
+      <div className="container-fluid mx-8 lg:flex  lg:mx-auto  md:mx-8 sm:mx-8">
+        <div className="flex flex-col lg:flex-row mx-auto lg:gap-[40px]">
+          <img
+            className="sm:rounded-t-lg  rounded-lg mx-4 "
+            src={about}
+            alt=""
+          />
 
           <div className="flex flex-col font-semibold lg:p-20 p-4">
             <p className="text-justify tracking-wide">
@@ -99,17 +102,20 @@ function LandingPage() {
         </div>
       </div>
       {/* Categ */}
-      <div className=" lg:mx- lg:mb-5 xl:mx-8 xl:px-8 ">
-        <div className="    lg:mb-5 xl:mx-8 xl:px-8">
-          <div className="sm:mx-8 lg:mx-8 lg:mb-5 xl:mx-8 xl:px-8 xl:px-8  lg:mx-8 lg:mb-5 xl:mx-8 mb-3   ">
-            <h1 className="font-semibold text-2xl p-4  lg:text-5xl">
+      <div className="xl:mx-8 lg:mx-8 px-8 ">
+        <div className="xl:mx-8 lg:mx-8 sm-mx-0 ">
+          <div className="p-8 xl:mx-8 lg:mx-8  md:mx-0 sm:mx-0 lg,md,xl:px-8 ">
+            <h1 className="font-semibold text-2xl p-4  lg:text-5xl xl:px-8 xl:mx-8 sm:mx-0  ">
               Produk Teratas
             </h1>
-            <a href="#" className="text-blue-500 p-4 hover:text-blue-700 ">
+            <a
+              href="category-product"
+              className="text-blue-500 hover:text-blue-700  xl:px-8 xl:mx-8 sm:mx-8 mx-4 "
+            >
               Lihat Selengkapnya &gt;
             </a>
           </div>
-          <div className="swiper-container  lg:mx- lg:mb-5 xl:mx-8 xl:px-8  ">
+          <div className="swiper-container px-8 mx-8 mb-8 pb-b">
             <Swiper />
           </div>
         </div>

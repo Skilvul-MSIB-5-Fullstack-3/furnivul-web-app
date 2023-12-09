@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Breadcrumb, Button, Modal } from "flowbite-react";
 import { FaCartShopping } from "react-icons/fa6";
 import { NavLink, useNavigate, useParams, Link } from "react-router-dom";
@@ -14,6 +14,10 @@ function DetailProduct() {
   const [activeTab, setActiveTab] = useState("description");
   const [discusses, setDiscusses] = useState([]);
   const [addToCartSuccess, setAddToCartSuccess] = useState(false);
+
+  const isUserLoggedIn = localStorage.getItem("token") ? true : false;
+
+  // console.log("isUserLoggedIn:", isUserLoggedIn);
 
   const Avatar = JSON.parse(localStorage.getItem("image"));
 
@@ -53,12 +57,23 @@ function DetailProduct() {
   };
 
   const handleAddToCart = (product) => {
-    Swal.fire({
-      icon: "success",
-      title: "Success! Added to cart",
-      text: "Your product has been added to the cart.",
-      timer: 3000,
-    });
+    if (!isUserLoggedIn) {
+      new Swal({
+        icon: "error",
+        title: "Oops...",
+        text: "You must login first!",
+        timer: 3000,
+      });
+      navigate("/login");
+      return;
+    } else {
+      Swal.fire({
+        icon: "success",
+        title: "Success! Added to cart",
+        text: "Your product has been added to the cart.",
+        timer: 3000,
+      });
+    }
 
     const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
     const existingProductIndex = existingCart.findIndex(
@@ -131,12 +146,13 @@ function DetailProduct() {
                 </div>
               </div>
               {/* Button.Group and Buttons */}
-              <div className="w-full bg-blue-700 rounded-xl">
+              <div className="w-full bg-blue-500 rounded-xl">
                 <div className="mt-6 w-full">
                   <Button.Group>
                     <Button
                       color={activeTab === "description" ? "blue" : "gray"}
                       onClick={() => handleTabChange("description")}
+                      className=""
                     >
                       Deskripsi
                     </Button>

@@ -45,12 +45,12 @@ const router = createBrowserRouter(
 
         {/* Routing article pages */}
         <Route path="/article" element={<Article />} />
-        <Route path="/article/detail-article" element={<DetailArticle />} />
+        <Route path="/article/detail-article/:id" element={<DetailArticle />} />
 
         {/* Routing outlet pages product */}
         <Route path="/category-product" element={<CategoryProduct />} />
         <Route
-          path="/category-product/list-product/:productId"
+          path="/category-product/list-product/:categoryId"
           element={<ListingProduct />}
         />
         <Route

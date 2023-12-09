@@ -17,6 +17,7 @@ import "swiper/css/autoplay";
 import axios from "axios";
 import arrowright from "../assets/svg/arrow-right.svg";
 import { Button } from "flowbite-react";
+import { Link } from "react-router-dom";
 export default () => {
   const [data, setData] = useState([]);
 
@@ -55,7 +56,7 @@ export default () => {
             spaceBetween: 5,
           },
           768: {
-            slidesPerView: 3,
+            slidesPerView: 4,
             spaceBetween: 10,
           },
           1024: {
@@ -72,8 +73,8 @@ export default () => {
           });
           return (
             <SwiperSlide key={index}>
-              <div className="swiper-slide mx-4 ">
-                <div className="flex lg:flex-col flex-col p-4 bg-[#023047] border border-black rounded-lg  my-2 w-[300px] lg:w-[350px] mx-8">
+              <div className="swiper-slide xl:mx-8 lg:mx-8 md:mx-8 ">
+                <div className="flex lg:flex-col flex-col p-4 bg-[#023047] border border-black rounded-lg  my-2 w-[300px] lg:w-[350px] xl:mx-8 lg:mx-8 md:mx-8  sm:mx-0">
                   <div className="my-2 text-white p-3">
                     <img
                       src={item.product_image}
@@ -94,13 +95,17 @@ export default () => {
                       Tersedia banyak pilihan
                     </p>
                     {/* Atur disini */}
-                    <Button
-                      href="#"
-                      className="bg-[#ffb703] mt-8 py-2 px-4 rounded-xl border border-black text-black shadow w-max flex items-center gap-6 ml-auto"
+                    <Link
+                      to={`/category-product/list-product/detail-product/${item._id}`}
                     >
-                      <span className="text-lg">Detail Product </span> &nbsp;
-                      <img src={arrowright} alt="" />
-                    </Button>
+                      <Button
+                        href="#"
+                        className="bg-[#ffb703] mt-8 py-2 px-4 rounded-xl border border-black text-black shadow w-max flex items-center gap-6 ml-auto"
+                      >
+                        <span className="text-lg">Detail Product </span> &nbsp;
+                        <img src={arrowright} alt="" />
+                      </Button>
+                    </Link>
                     {/* Batas */}
                   </div>
                 </div>
